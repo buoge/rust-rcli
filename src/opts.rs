@@ -1,4 +1,4 @@
-use anyhow::Ok;
+
 use clap::Parser;
 use std::path::Path;
 
@@ -26,11 +26,11 @@ pub struct CsvOptions {
     #[arg(short, long, default_value_t = ',')]
     pub delimiter: char,
 
-    #[arg(short, long, default_value_t = true)]
+    #[arg(long, default_value_t = true)]
     pub header: bool,
 }
 
-fn verify_input_file(filename: &str) -> Result<String, &'static str> {
+fn verify_input_file(filename: &str)->Result<String, &'static str>{
     if Path::new(filename).exists() {
         Ok(filename.into())
     } else {
