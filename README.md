@@ -2,6 +2,8 @@
 
 ## 环境设置
 
+if commit check not run need to run : pre-commit install
+
 ### 安装 Rust
 
 ```bash
