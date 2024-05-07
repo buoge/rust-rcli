@@ -3,14 +3,21 @@
 // cargo run -- csv -i assets/juventus.csv
 
 use clap::Parser;
-use rust_rcli::{Opts,SubCommand,process_csv};
+use rust_rcli::{process_csv, Opts, SubCommand};
 
-fn main() ->anyhow::Result<()>{
+fn main() -> anyhow::Result<()> {
     println!("Hello, world!");
 
-    let opts = Opts::parse();
+    let opts: Opts = Opts::parse();
     match opts.cmd {
-        SubCommand::Csv(opts) => process_csv(&opts.input, &opts.output)?,
+        SubCommand::Csv(opts) => {
+            let output = if let Some(output) = opts.output {
+                output.clone()
+            } else {
+                format!("output.{}", opts.format)
+            };
+            process_csv(&opts.input, output, opts.format)?
+        }
     }
 
     Ok(())
