@@ -1,6 +1,7 @@
 // rcli csv -i input.csv -o output.json --header -d ','
 
 // cargo run -- csv -i assets/juventus.csv
+// cargo run -- csv -i assets/juventus.csv --format yaml
 
 use clap::Parser;
 use rust_rcli::{process_csv, Opts, SubCommand};
