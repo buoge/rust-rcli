@@ -3,8 +3,10 @@
 // cargo run -- csv -i assets/juventus.csv
 // cargo run -- csv -i assets/juventus.csv --format yaml
 
+// cargo run  gen-pass -l 12
+
 use clap::Parser;
-use rust_rcli::{process_csv, Opts, SubCommand};
+use rust_rcli::{process_csv, process_genpass, Opts, SubCommand};
 
 fn main() -> anyhow::Result<()> {
     println!("Hello, world!");
@@ -18,6 +20,15 @@ fn main() -> anyhow::Result<()> {
                 format!("output.{}", opts.format)
             };
             process_csv(&opts.input, output, opts.format)?
+        }
+        SubCommand::GenPass(opts) => {
+            process_genpass(
+                opts.length,
+                opts.uppercase,
+                opts.lowercase,
+                opts.number,
+                opts.symbol,
+            )?;
         }
     }
 
