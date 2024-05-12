@@ -34,7 +34,7 @@ repos:
       - id: typos
         name: typos
         description: check typo
-        entry: bash -c 'typos --exclude b64.txt'
+        entry: bash -c 'typos'
         language: rust
         files: \.*$
         pass_filenames: false
