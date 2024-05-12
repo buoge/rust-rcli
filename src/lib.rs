@@ -1,5 +1,7 @@
-mod opts;
+mod cli;
 mod process;
+mod utils;
 
-pub use opts::{Opts, SubCommand};
+pub use cli::{Base64Format, Base64SubCommand, Opts, SubCommand, TextSignFormat, TextSubCommand};
 pub use process::*;
+pub use utils::*;
